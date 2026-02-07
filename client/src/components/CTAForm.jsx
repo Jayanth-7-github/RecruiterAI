@@ -60,7 +60,7 @@ const CTAForm = () => {
                         onClick={() => navigate('/dashboard')}
                         className="px-8 py-4 bg-white text-blue-700 text-lg font-bold rounded-full hover:bg-gray-50 transition-all shadow-lg hover:shadow-xl hover:-translate-y-1"
                     >
-                        Go to Dashboard
+                        Start Free Trial
                     </button>
                     <button className="px-8 py-4 bg-transparent border-2 border-white text-white text-lg font-bold rounded-full hover:bg-white/10 transition-all hover:-translate-y-1">
                         Schedule Demo
