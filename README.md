@@ -1,69 +1,46 @@
 # RecruiterAI
 
-AI-powered recruiting platform landing page.
+AI-powered recruiting platform landing page built with React and Vite.
+
+This repo currently contains the frontend client in the `client/` directory.
 
 ## Tech Stack
 
-- **Frontend**: React (Vite) + TailwindCSS
-- **Backend**: Node.js + Express + MongoDB
-- **Database**: MongoDB (Local or Atlas)
+- **Frontend**: React (Vite) + Tailwind CSS
 
 ## Prerequisites
 
-- Node.js installed
-- MongoDB installed and running locally on default port (27017) OR set `MONGO_URI` in `server/.env`
+- Node.js (LTS recommended)
 
 ## Getting Started
 
-### 1. Install Dependencies
+From the project root:
 
-**Server:**
-```bash
-cd server
-npm install
-```
-
-**Client:**
 ```bash
 cd client
 npm install
 ```
 
-### 2. Configure Environment
+Then start the development server:
 
-**Server:**
-Edit `server/.env` if needed. Default:
-```
-PORT=5000
-MONGO_URI=mongodb://127.0.0.1:27017/recruiterai
-```
-
-### 3. Run Application
-
-You can run the server and client in separate terminals.
-
-**Start Backend (Terminal 1):**
 ```bash
-cd server
-npm start
-```
-
-**Start Frontend (Terminal 2):**
-```bash
-cd client
 npm run dev
 ```
 
-The frontend will act as the landing page running typically on `http://localhost:5173`.
-The backend will listen for form submissions on `http://localhost:5000`.
+By default the app runs at `http://localhost:5173`.
 
-## Features
+## Available Scripts (client)
 
-- **Responsive Landing Page**: Modern SaaS design.
-- **Contact Form**: Submits data to the backend API.
-- **Components**: Hero, Flowcharts, Metrics, Logo Marquee, Testimonials, FAQ.
+Inside `client/` you can run:
 
-## Deployment
+- `npm run dev` – Start Vite dev server
+- `npm run build` – Create production build
+- `npm run preview` – Preview production build locally
 
-- **Frontend**: Ready for Vercel deployment.
-- **Backend**: Ready for Render/Railway deployment. Ensure environment variables are set in production.
+## Key Features
+
+- Modern, responsive SaaS-style landing page
+- Sections for hero, metrics, testimonials, FAQs, and more
+- Components for jobs, dashboard views, and candidate management UI
+
+For more details about the Vite + React setup, see [client/README.md](client/README.md).
