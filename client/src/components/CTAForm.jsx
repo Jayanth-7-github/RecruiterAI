@@ -57,10 +57,10 @@ const CTAForm = () => {
 
                 <div className="flex flex-col sm:flex-row justify-center gap-4 mb-16">
                     <button
-                        onClick={() => navigate(isAuthenticated ? '/dashboard' : '/register')}
+                        onClick={() => navigate('/dashboard')}
                         className="px-8 py-4 bg-white text-blue-700 text-lg font-bold rounded-full hover:bg-gray-50 transition-all shadow-lg hover:shadow-xl hover:-translate-y-1"
                     >
-                        {isAuthenticated ? 'Go to Dashboard' : 'Start Free Trial'}
+                        Go to Dashboard
                     </button>
                     <button className="px-8 py-4 bg-transparent border-2 border-white text-white text-lg font-bold rounded-full hover:bg-white/10 transition-all hover:-translate-y-1">
                         Schedule Demo

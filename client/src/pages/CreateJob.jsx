@@ -8,11 +8,7 @@ const CreateJob = () => {
     const navigate = useNavigate();
     const { isAuthenticated, loading } = useContext(AuthContext);
 
-    useEffect(() => {
-        if (!loading && !isAuthenticated) {
-            navigate('/login');
-        }
-    }, [isAuthenticated, loading, navigate]);
+
 
     const [formData, setFormData] = useState({
         title: '',
@@ -32,11 +28,23 @@ const CreateJob = () => {
         e.preventDefault();
         setSubmitLoading(true);
 
+        const newJob = {
+            ...formData,
+            _id: Date.now().toString(),
+            skills: formData.skills.split(',').map(s => s.trim()),
+            type: 'Full-time'
+        };
+
+        const savedJobs = localStorage.getItem('recruiterai_jobs');
+        const jobsList = savedJobs ? JSON.parse(savedJobs) : [];
+        const updatedJobs = [newJob, ...jobsList];
+
+        localStorage.setItem('recruiterai_jobs', JSON.stringify(updatedJobs));
 
         setTimeout(() => {
             setSubmitLoading(false);
             navigate('/dashboard');
-        }, 800);
+        }, 500);
     };
 
     return (

@@ -12,39 +12,22 @@ const Dashboard = () => {
     const { isAuthenticated, loading: authLoading } = useContext(AuthContext);
 
     useEffect(() => {
-        if (!authLoading) {
-            if (isAuthenticated) {
-                fetchJobs();
-            } else {
-                navigate('/login');
-            }
-        }
-    }, [isAuthenticated, authLoading, navigate]);
+        fetchJobs();
+    }, []);
 
 
     const fetchJobs = () => {
-        const mockDashboardJobs = [
-            {
-                _id: '1',
-                title: 'Senior Frontend Developer',
-                department: 'Engineering',
-                location: 'Remote',
-                salary: '$120k - $160k',
-                type: 'Full-time',
-                skills: ['React', 'TypeScript', 'Tailwind CSS'],
-                description: 'We are looking for a Senior Frontend Developer to join our team...'
-            }
-        ];
+        const savedJobs = localStorage.getItem('recruiterai_jobs');
+        const jobsList = savedJobs ? JSON.parse(savedJobs) : [];
 
-
-        setTimeout(() => {
-            setJobs(mockDashboardJobs);
-            setFetchLoading(false);
-        }, 500);
+        setJobs(jobsList);
+        setFetchLoading(false);
     };
 
     const handleDeleteJob = (id) => {
-        setJobs(jobs.filter(job => job._id !== id));
+        const updatedJobs = jobs.filter(job => job._id !== id);
+        setJobs(updatedJobs);
+        localStorage.setItem('recruiterai_jobs', JSON.stringify(updatedJobs));
     };
 
     return (

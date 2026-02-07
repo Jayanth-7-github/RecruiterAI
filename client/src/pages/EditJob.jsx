@@ -4,18 +4,7 @@ import Navbar from '../components/Navbar';
 import { AuthContext } from '../context/AuthContext';
 import { ArrowLeft, Loader } from 'lucide-react';
 
-const MOCK_JOBS = [
-    {
-        _id: '1',
-        title: 'Senior Frontend Developer',
-        department: 'Engineering',
-        location: 'Remote',
-        salaryRange: '$120k - $160k',
-        type: 'Full-time',
-        skills: ['React', 'TypeScript', 'Tailwind CSS'],
-        description: 'We are looking for a Senior Frontend Developer to join our team...'
-    }
-];
+
 
 const EditJob = () => {
     const { id } = useParams();
@@ -33,26 +22,26 @@ const EditJob = () => {
     const [pageLoading, setPageLoading] = useState(true);
     const [submitLoading, setSubmitLoading] = useState(false);
 
+
+
     useEffect(() => {
-        if (!authLoading && !isAuthenticated) {
-            navigate('/login');
+        const savedJobs = localStorage.getItem('recruiterai_jobs');
+        if (savedJobs) {
+            const jobsList = JSON.parse(savedJobs);
+            const job = jobsList.find(j => j._id === id);
+
+            if (job) {
+                setFormData({
+                    title: job.title || '',
+                    department: job.department || '',
+                    location: job.location || '',
+                    salaryRange: job.salaryRange || job.salary || '',
+                    description: job.description || '',
+                    skills: job.skills ? job.skills.join(', ') : ''
+                });
+            }
         }
-    }, [isAuthenticated, authLoading, navigate]);
-
-    useEffect(() => {
-
-        setTimeout(() => {
-            const job = MOCK_JOBS.find(j => j._id === id) || MOCK_JOBS[0];
-            setFormData({
-                title: job.title || '',
-                department: job.department || '',
-                location: job.location || '',
-                salaryRange: job.salaryRange || '',
-                description: job.description || '',
-                skills: job.skills ? job.skills.join(', ') : ''
-            });
-            setPageLoading(false);
-        }, 500);
+        setPageLoading(false);
     }, [id]);
 
     const handleChange = (e) => {
@@ -63,18 +52,29 @@ const EditJob = () => {
         e.preventDefault();
         setSubmitLoading(true);
 
+        const savedJobs = localStorage.getItem('recruiterai_jobs');
+        if (savedJobs) {
+            const jobsList = JSON.parse(savedJobs);
+            const updatedJobs = jobsList.map(j => {
+                if (j._id === id) {
+                    return {
+                        ...j,
+                        ...formData,
+                        skills: formData.skills.split(',').map(s => s.trim())
+                    };
+                }
+                return j;
+            });
+            localStorage.setItem('recruiterai_jobs', JSON.stringify(updatedJobs));
+        }
 
         setTimeout(() => {
             setSubmitLoading(false);
             navigate('/dashboard');
-        }, 800);
+        }, 500);
     };
 
-    if (pageLoading || authLoading) return (
-        <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-            <Loader className="animate-spin text-blue-600" size={32} />
-        </div>
-    );
+
 
     return (
         <div className="min-h-screen bg-gray-50">

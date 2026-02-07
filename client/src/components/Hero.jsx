@@ -26,7 +26,7 @@ const Hero = () => {
 
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
                     <button
-                        onClick={() => navigate('/register')}
+                        onClick={() => navigate('/dashboard')}
                         className="px-8 py-4 bg-primary text-white text-lg font-bold rounded-full hover:bg-blue-700 transition-all shadow-lg hover:shadow-xl hover:-translate-y-1"
                     >
                         Start Hiring Smarter

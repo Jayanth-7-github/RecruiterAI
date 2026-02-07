@@ -10,10 +10,11 @@ const Navbar = () => {
 
     const handleLogout = () => {
         logout();
+        localStorage.clear();
         navigate('/');
     };
 
-    const authLinks = (
+    const navLinks = (
         <div className="hidden md:flex items-center space-x-6">
             <Link to="/" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">Home</Link>
             <Link to="/jobs" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">Jobs</Link>
@@ -37,21 +38,6 @@ const Navbar = () => {
             >
                 <LogOut size={20} />
             </button>
-
-        </div>
-    );
-
-    const guestLinks = (
-        <div className="hidden md:flex space-x-8 items-center">
-            <Link to="/" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">Home</Link>
-            <Link to="/jobs" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">Jobs</Link>
-            <Link to="/login" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">Sign In</Link>
-            <Link
-                to="/create-job"
-                className="bg-blue-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-blue-700 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
-            >
-                Post Job
-            </Link>
         </div>
     );
 
@@ -65,11 +51,7 @@ const Navbar = () => {
                         </span>
                     </div>
 
-                    {!loading && (
-                        <>
-                            {isAuthenticated ? authLinks : guestLinks}
-                        </>
-                    )}
+                    {!loading && navLinks}
 
                     <div className="md:hidden flex items-center">
                         <button onClick={() => setIsOpen(!isOpen)} className="text-gray-600 hover:text-gray-900 focus:outline-none">
@@ -85,29 +67,14 @@ const Navbar = () => {
                 </div>
             </div>
 
-
             {isOpen && (
                 <div className="md:hidden bg-white border-b border-gray-100">
                     <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                         <Link to="/" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Home</Link>
-                        <Link to="/jobs" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Jobs</Link>
-                        {isAuthenticated ? (
-                            <>
-                                <Link to="/dashboard" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Dashboard</Link>
-                                <button onClick={handleLogout} className="w-full text-left block px-3 py-2 rounded-md text-base font-medium text-red-600 hover:bg-gray-50">Logout</button>
-                            </>
-                        ) : (
-                            <>
-                                <Link to="/login" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Sign In</Link>
-                                <Link to="/register" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Sign Up</Link>
-                            </>
-                        )}
-                        <Link
-                            to="/create-job"
-                            className="w-full text-left block px-3 py-2 text-base font-medium text-blue-600 hover:bg-blue-50"
-                        >
-                            Post Job
-                        </Link>
+                        <Link to="/jobs" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Explore</Link>
+                        <Link to="/dashboard" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Dashboard</Link>
+                        <Link to="/create-job" className="block px-3 py-2 rounded-md text-base font-medium text-blue-600 hover:bg-blue-50">Post Job</Link>
+                        <button onClick={handleLogout} className="w-full text-left block px-3 py-2 rounded-md text-base font-medium text-red-600 hover:bg-gray-50">Logout</button>
                     </div>
                 </div>
             )}

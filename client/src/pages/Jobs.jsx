@@ -42,12 +42,16 @@ const Jobs = () => {
     const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
+        const savedJobs = localStorage.getItem('recruiterai_jobs');
+        if (savedJobs) {
+            setJobs(JSON.parse(savedJobs));
+            setLoading(false);
+        } else {
 
-        const timer = setTimeout(() => {
+            localStorage.setItem('recruiterai_jobs', JSON.stringify(MOCK_JOBS));
             setJobs(MOCK_JOBS);
             setLoading(false);
-        }, 800);
-        return () => clearTimeout(timer);
+        }
     }, []);
 
     const filteredJobs = jobs.filter(job =>

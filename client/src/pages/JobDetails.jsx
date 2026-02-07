@@ -6,38 +6,7 @@ import CandidateTable from '../components/CandidateTable';
 import { AuthContext } from '../context/AuthContext';
 import { ArrowLeft, Users, Briefcase } from 'lucide-react';
 
-const MOCK_JOBS = [
-    {
-        _id: '1',
-        title: 'Senior Frontend Developer',
-        department: 'Engineering',
-        location: 'Remote',
-        salary: '$120k - $160k',
-        type: 'Full-time',
-        skills: ['React', 'TypeScript', 'Tailwind CSS'],
-        description: 'We are looking for a Senior Frontend Developer to join our team...'
-    },
-    {
-        _id: '2',
-        title: 'Product Designer',
-        department: 'Design',
-        location: 'San Francisco, CA',
-        salary: '$110k - $150k',
-        type: 'Full-time',
-        skills: ['Figma', 'UI/UX', 'Prototyping'],
-        description: 'Join our design team to create beautiful and intuitive user experiences...'
-    },
-    {
-        _id: '3',
-        title: 'Backend Engineer',
-        department: 'Engineering',
-        location: 'Austin, TX',
-        salary: '$130k - $170k',
-        type: 'Full-time',
-        skills: ['Node.js', 'MongoDB', 'AWS'],
-        description: 'Help us build robust and scalable backend systems...'
-    }
-];
+
 
 const MOCK_CANDIDATES = [
     {
@@ -68,15 +37,19 @@ const JobDetails = () => {
     const { isAuthenticated } = useContext(AuthContext);
 
     useEffect(() => {
-
-        setTimeout(() => {
-            const foundJob = MOCK_JOBS.find(j => j._id === id) || MOCK_JOBS[0];
-            setJob(foundJob);
-            if (isAuthenticated) {
-                setCandidates(MOCK_CANDIDATES);
+        const savedJobs = localStorage.getItem('recruiterai_jobs');
+        if (savedJobs) {
+            const jobsList = JSON.parse(savedJobs);
+            const foundJob = jobsList.find(j => j._id === id);
+            if (foundJob) {
+                setJob(foundJob);
             }
-            setLoading(false);
-        }, 500);
+        }
+
+        if (isAuthenticated) {
+            setCandidates(MOCK_CANDIDATES);
+        }
+        setLoading(false);
     }, [id, isAuthenticated]);
 
     const handleStatusUpdate = (candidateId, newStatus) => {
