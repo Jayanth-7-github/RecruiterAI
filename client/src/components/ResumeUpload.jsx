@@ -18,7 +18,7 @@ const ResumeUpload = ({ jobId, onUploadSuccess }) => {
 
         setUploading(true);
 
-        // Mocking AI processing
+
         setTimeout(() => {
             const mockResult = {
                 score: 85 + Math.floor(Math.random() * 10),

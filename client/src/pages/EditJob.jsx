@@ -40,7 +40,7 @@ const EditJob = () => {
     }, [isAuthenticated, authLoading, navigate]);
 
     useEffect(() => {
-        // Mocking fetch job
+
         setTimeout(() => {
             const job = MOCK_JOBS.find(j => j._id === id) || MOCK_JOBS[0];
             setFormData({
@@ -63,7 +63,7 @@ const EditJob = () => {
         e.preventDefault();
         setSubmitLoading(true);
 
-        // Simulation
+
         setTimeout(() => {
             setSubmitLoading(false);
             navigate('/dashboard');

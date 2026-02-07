@@ -68,7 +68,7 @@ const JobDetails = () => {
     const { isAuthenticated } = useContext(AuthContext);
 
     useEffect(() => {
-        // Mock data loading
+
         setTimeout(() => {
             const foundJob = MOCK_JOBS.find(j => j._id === id) || MOCK_JOBS[0];
             setJob(foundJob);

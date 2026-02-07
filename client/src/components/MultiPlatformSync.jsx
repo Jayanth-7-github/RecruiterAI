@@ -6,7 +6,7 @@ const platforms = [
 ];
 
 const MultiPlatformSync = () => {
-    // Large spacing and clean tracks
+
     const displayPlatforms = [...platforms, ...platforms];
 
     return (

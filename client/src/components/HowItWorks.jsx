@@ -1,10 +1,6 @@
 import React from 'react';
 import { Search, Video, Database, Sparkles } from 'lucide-react';
 
-// Unified Color Palette
-// #3B82F6 - Primary Blue
-// #EFF6FF - Light Blue BG
-// #A5D8FF - Soft Border Blue
 
 const Node = ({ text, type = 'process', label }) => {
     const bgColors = {
@@ -31,14 +27,13 @@ const Node = ({ text, type = 'process', label }) => {
 
 const DecisionNode = ({ text }) => (
     <div className="relative py-8 flex flex-col items-center">
-        {/* Diamond Box */}
         <div className="w-14 h-14 bg-white border-2 border-[#A5D8FF] rotate-45 flex items-center justify-center shadow-lg shadow-blue-50/50 z-10">
             <div className="-rotate-45 text-[9px] text-[#3B82F6] font-black text-center px-1 leading-tight uppercase">
                 {text}
             </div>
         </div>
 
-        {/* Branch Labels */}
+
         <div className="absolute top-1/2 -translate-y-1/2 w-[120%] flex justify-between px-2">
             <span className="text-[9px] font-black text-[#3B82F6] bg-white px-1">YES</span>
             <span className="text-[9px] font-black text-gray-400 bg-white px-1">NO</span>
@@ -56,7 +51,6 @@ const Connector = () => (
 
 const FlowchartCard = ({ title, icon: Icon, children, benefit }) => (
     <div className="flex flex-col bg-white rounded-[32px] border border-gray-100 shadow-sm overflow-hidden h-full">
-        {/* Header with Icon */}
         <div className="p-8 pb-4">
             <div className="flex items-center gap-4">
                 <div className="p-2.5 rounded-2xl bg-[#EFF6FF] text-[#3B82F6]">
@@ -66,14 +60,12 @@ const FlowchartCard = ({ title, icon: Icon, children, benefit }) => (
             </div>
         </div>
 
-        {/* Builder Canvas */}
         <div className="flex-1 px-8 py-10 relative bg-[#fcfdfe] border-y border-gray-50 flex items-center justify-center">
             <div className="flex flex-col items-center w-full">
                 {children}
             </div>
         </div>
 
-        {/* Footer */}
         <div className="p-8 pt-6">
             <div className="flex items-center gap-3 px-5 py-3 rounded-2xl bg-[#EFF6FF] border border-[#A5D8FF]/30">
                 <Sparkles size={16} className="text-[#3B82F6]" />
@@ -98,8 +90,6 @@ const HowItWorks = () => {
                 </div>
 
                 <div className="grid lg:grid-cols-3 gap-8">
-
-                    {/* Flowchart 1 */}
                     <FlowchartCard title="Automated Screening" icon={Search} benefit="Screen 250+ applications in minutes">
                         <Node text="New Application Submitted" label="START" />
                         <Connector />
@@ -115,7 +105,6 @@ const HowItWorks = () => {
                         <Node text="Send Reminder (24h Before)" />
                     </FlowchartCard>
 
-                    {/* Flowchart 2 */}
                     <FlowchartCard title="Interview Process" icon={Video} benefit="Reduce hire time by 70%">
                         <Node text="Candidate Accepts Invite" label="ROUND 1" />
                         <Connector />
@@ -131,7 +120,6 @@ const HowItWorks = () => {
                         <Node text="Send Offer Letter" type="success" />
                     </FlowchartCard>
 
-                    {/* Flowchart 3 */}
                     <FlowchartCard title="Talent Pipeline" icon={Database} benefit="Never start hiring from zero">
                         <Node text="Candidate Rejected" label="POOL" />
                         <Connector />

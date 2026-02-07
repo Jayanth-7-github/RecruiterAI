@@ -41,13 +41,11 @@ const Hero = () => {
             </div>
 
 
-            {/* Desktop-Only Social Proof Pillars - Grounded Grid Design */}
+
             <div className="hidden xl:block absolute top-[15%] inset-x-0 bottom-0 pointer-events-none z-0">
                 <div className="max-w-7xl mx-auto h-full px-4 relative">
 
-                    {/* Left Pillar - Grounded */}
                     <div className="absolute left-0 top-10 space-y-12">
-                        {/* Sarah K */}
                         <div className="bg-white/95 backdrop-blur-sm p-6 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] max-w-[280px] border border-gray-100 transform -rotate-1 translate-x-4 animate-float">
                             <div className="flex items-start gap-4">
                                 <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center text-amber-700 font-bold text-xs ring-4 ring-amber-50">SK</div>
@@ -58,7 +56,6 @@ const Hero = () => {
                             </div>
                         </div>
 
-                        {/* Rahul M */}
                         <div className="bg-white/95 backdrop-blur-sm p-6 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] max-w-[280px] border border-gray-100 transform rotate-1 animate-float" style={{ animationDelay: '1.5s' }}>
                             <div className="flex items-start gap-4">
                                 <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-700 font-bold text-xs ring-4 ring-emerald-50">RM</div>
@@ -70,9 +67,7 @@ const Hero = () => {
                         </div>
                     </div>
 
-                    {/* Right Pillar - Grounded */}
                     <div className="absolute right-0 top-16 space-y-12">
-                        {/* Priya S */}
                         <div className="bg-white/95 backdrop-blur-sm p-6 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] max-w-[280px] border border-gray-100 transform rotate-1 -translate-x-4 animate-float" style={{ animationDelay: '2.5s' }}>
                             <div className="flex items-start gap-4">
                                 <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-violet-100 flex items-center justify-center text-violet-700 font-bold text-xs ring-4 ring-violet-50">PS</div>
@@ -83,7 +78,6 @@ const Hero = () => {
                             </div>
                         </div>
 
-                        {/* Amit T */}
                         <div className="bg-white/95 backdrop-blur-sm p-6 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] max-w-[280px] border border-gray-100 transform -rotate-1 animate-float" style={{ animationDelay: '4s' }}>
                             <div className="flex items-start gap-4">
                                 <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-rose-100 flex items-center justify-center text-rose-700 font-bold text-xs ring-4 ring-rose-50">AT</div>

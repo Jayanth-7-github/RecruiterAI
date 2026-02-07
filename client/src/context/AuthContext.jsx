@@ -1,6 +1,6 @@
 import React, { createContext, useReducer, useEffect } from 'react';
 
-// Mock initial state
+
 const initialState = {
     token: localStorage.getItem('token') || 'mock-token',
     isAuthenticated: !!localStorage.getItem('token'),
@@ -47,7 +47,7 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const [state, dispatch] = useReducer(authReducer, initialState);
 
-    // Mock load user
+
     const loadUser = () => {
         const user = JSON.parse(localStorage.getItem('user'));
         if (user) {
@@ -56,7 +56,7 @@ export const AuthProvider = ({ children }) => {
                 payload: user
             });
         } else if (state.token) {
-            // Default mock user if token exists but no user in storage
+
             const mockUser = { id: '1', name: 'Demo User', email: 'demo@example.com' };
             dispatch({
                 type: 'USER_LOADED',

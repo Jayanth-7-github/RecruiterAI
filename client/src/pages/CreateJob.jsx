@@ -32,7 +32,7 @@ const CreateJob = () => {
         e.preventDefault();
         setSubmitLoading(true);
 
-        // Mocking the creation delay
+
         setTimeout(() => {
             setSubmitLoading(false);
             navigate('/dashboard');

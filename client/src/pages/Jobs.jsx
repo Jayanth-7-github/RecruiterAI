@@ -42,7 +42,7 @@ const Jobs = () => {
     const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
-        // Mock API call delay
+
         const timer = setTimeout(() => {
             setJobs(MOCK_JOBS);
             setLoading(false);

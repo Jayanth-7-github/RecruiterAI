@@ -21,8 +21,8 @@ const Dashboard = () => {
         }
     }, [isAuthenticated, authLoading, navigate]);
 
+
     const fetchJobs = () => {
-        // Mock data for dashboard
         const mockDashboardJobs = [
             {
                 _id: '1',
@@ -36,7 +36,7 @@ const Dashboard = () => {
             }
         ];
 
-        // Simulating fetch delay
+
         setTimeout(() => {
             setJobs(mockDashboardJobs);
             setFetchLoading(false);
